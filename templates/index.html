@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AQI Predictor</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #74ebd5, #9face6);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+            margin-bottom: 5px;
+            color: #444;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            transition: border 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: #5c6bc0;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            margin-top: 20px;
+            padding: 12px;
+            background-color: #5c6bc0;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #3f51b5;
+        }
+
+        h3 {
+            text-align: center;
+            margin-top: 20px;
+            color: #2e7d32;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>AQI Prediction</h2>
+        <form method="POST">
+            <label for="so2">SO₂:</label>
+            <input type="text" id="so2" name="so2" placeholder="Enter SO₂ value" title="Enter SO₂ value">
+
+            <label for="no2">NO₂:</label>
+            <input type="text" id="no2" name="no2" placeholder="Enter NO₂ value" title="Enter NO₂ value">
+
+            <label for="pm2_5">PM2.5:</label>
+            <input type="text" id="pm2_5" name="pm2_5" placeholder="Enter PM2.5 value" title="Enter PM2.5 value">
+
+            <input type="submit" value="Predict AQI">
+        </form>
+
+        {% if prediction %}
+            <h3>Predicted AQI: {{ prediction }}</h3>
+        {% endif %}
+    </div>
+</body>
+</html>
